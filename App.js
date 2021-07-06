@@ -1,25 +1,32 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import Loading from "./Loading";
+import * as Location from "expo-location";
+import { Alert } from "react-native";
+export default class extends React.Component {
+  state = {
+    isLoading: true,
+  };
 
-export default function Loading() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Getting Weather</Text>
-    </View>
-  );
+  getLocation = async () => {
+    try {
+      await Location.requestForegroundPermissionsAsync();
+
+      const {
+        coords: { latitude, longitude },
+      } = await Location.getCurrentPositionAsync();
+
+      this.setState({ isLoading: false });
+    } catch (error) {
+      Alert.alert("Can't find you.", "So sad");
+    }
+  };
+
+  componentDidMount() {
+    this.getLocation();
+  }
+
+  render() {
+    const { isLoading } = this.state;
+    return <Loading />;
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-end",
-    paddingHorizontal: 30,
-    paddingVertical: 100,
-    backgroundColor: "#FDF6AA",
-  },
-
-  text: {
-    color: "#2c2c2c",
-    fontSize: 20,
-  },
-});
