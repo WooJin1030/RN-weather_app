@@ -41,4 +41,4 @@ Learning React Native by Building a Foking Weather App
 
 ## API
 
-[open weater](https://openweathermap.org/api)
+[open weather](https://openweathermap.org/api)
