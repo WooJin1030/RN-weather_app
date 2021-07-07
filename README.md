@@ -13,7 +13,7 @@ Learning React Native by Building a Foking Weather App
 
 <br />
 
-  <img src="https://user-images.githubusercontent.com/62231339/124704494-26106e00-df2f-11eb-9dc9-caf74b16c61e.jpg" alt="drawing" width="120" />
+  <img align="center" src="https://user-images.githubusercontent.com/62231339/124704494-26106e00-df2f-11eb-9dc9-caf74b16c61e.jpg" alt="drawing" width="120" />
 
 <br />
 <br />
