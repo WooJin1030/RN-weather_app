@@ -8,66 +8,77 @@ const weatherOptions = {
   Haze: {
     iconName: "weather-hazy",
     gradient: ["#636363", "#a2ab58"],
+    subTitle: "시원한 음료 한잔?",
   },
   Thunderstorm: {
     iconName: "weather-lightning",
     gradient: ["#CAC531", "#F3F9A7"],
+    subTitle: "번개 조심",
   },
   Drizzle: {
     iconName: "weather-partly-rainy",
     gradient: ["#74ebd5", "#ACB6E5"],
+    subTitle: "보슬 보슬 보슬비",
   },
   Rain: {
     iconName: "weather-rainy",
     gradient: ["#7F7FD5", "#86A8E7"],
+    subTitle: "비도 오고 그래서",
   },
   Snow: {
     iconName: "weather-snowy",
     gradient: ["#8e9eab", "#eef2f3"],
+    subTitle: "눈눈눈 눈이 오네요",
   },
   Clear: {
     iconName: "weather-sunny",
     gradient: ["#EDE574", "#E1F5C4"],
+    subTitle: "맑은 하루 좋은 하루",
   },
   Clouds: {
     iconName: "weather-cloudy",
-    gradient: ["#3E5151", "#DECBA4"],
+    gradient: ["#2C3E50", "#4CA1AF"],
+    subTitle: "우울해지지 말기!",
   },
   Mist: {
     iconName: "weather-fog",
     gradient: ["#bdc3c7", "#2c3e50"],
+    subTitle: "운전 조심!",
   },
   Smoke: {
     iconName: "weather-fog",
     gradient: ["#bdc3c7", "#2c3e50"],
+    subTitle: "운전 조심!",
   },
   Dust: {
     iconName: "weather-hail",
     gradient: ["#544a7d", "#ffd452"],
+    subTitle: "마스크 필수!",
   },
   Fog: {
     iconName: "weather-fog",
     gradient: ["#bdc3c7", "#2c3e50"],
+    subTitle: "운전 조심!",
   },
   Sand: {
     iconName: "weather-hail",
     gradient: ["#544a7d", "#ffd452"],
-  },
-  Dust: {
-    iconName: "weather-hail",
-    gradient: ["#544a7d", "#ffd452"],
+    subTitle: "마스크 필수!",
   },
   Ash: {
     iconName: "weather-hail",
     gradient: ["#544a7d", "#ffd452"],
+    subTitle: "마스크 필수!",
   },
   Squall: {
     iconName: "weather-windy-variant",
     gradient: ["#642B73", "#C6426E"],
+    subTitle: "우산 챙기세요",
   },
   Tornado: {
     iconName: "weather-tornado",
     gradient: ["#bdc3c7", "#2c3e50"],
+    subTitle: "실내에 있을것!",
   },
 };
 export default function Weather({ temp, condition }) {
@@ -85,7 +96,14 @@ export default function Weather({ temp, condition }) {
         />
         <Text style={styles.temp}>{temp} °C</Text>
       </View>
-      <View style={styles.halfContainer}></View>
+      <View style={styles.halfContainer}>
+        <View style={{ ...styles.halfContainer, ...styles.textContainer }}>
+          <Text style={styles.title}>{condition}</Text>
+          <Text style={styles.subTitle}>
+            {weatherOptions[condition].subTitle}
+          </Text>
+        </View>
+      </View>
     </LinearGradient>
   );
 }
@@ -106,7 +124,6 @@ Weather.propTypes = {
     "Dust",
     "Fog",
     "Sand",
-    "Dust",
     "Ash",
     "Squall",
     "Tornado",
@@ -129,5 +146,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  title: {
+    color: "white",
+    fontWeight: "300",
+    fontSize: 44,
+    marginBottom: 10,
+  },
+
+  subTitle: {
+    fontWeight: "600",
+    color: "white",
+    fontSize: 24,
+  },
+
+  textContainer: {
+    paddingHorizontal: 20,
+    alignItems: "flex-start",
   },
 });
