@@ -21,6 +21,8 @@ export default class extends React.Component {
       `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`
     );
 
+    // console.log(weather);
+
     this.setState({
       isLoading: false,
       condition: weather[0].main,
